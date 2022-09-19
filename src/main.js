@@ -17,22 +17,14 @@ const diffTexture = textureLoader.load(diff)
 const dispTexture = textureLoader.load(disp)
 const norTexture = textureLoader.load(nor)
 const roughTexture = textureLoader.load(rough)
-const material = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    map: diffTexture,
-    // wireframe:true,
-    // opacity:0.5,
-    transparent:true,
-    // alphaMap:roughTexture,
-})
+const material =  new THREE.MeshNormalMaterial({side:THREE.DoubleSide})
 loader.load( '/src/cup.glb', function ( gltf ) {
-    console.log()
     gltf.scene.scale.x = 0.2
     gltf.scene.scale.y = 0.2
     gltf.scene.scale.z = 0.2
     gltf.scene.position.y = -1
     gltf.scene.rotation.y = Math.PI
     gltf.scene.children[0].material = material
-    console.log(gltf.scene.children[0])
+    console.log(gltf)
     test.scene.add( gltf.scene );
 } );
